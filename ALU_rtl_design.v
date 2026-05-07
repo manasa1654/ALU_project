@@ -241,6 +241,12 @@ end
            temp = $signed(OPA_r) + $signed(OPB_r);
            RES  <= temp;
            OFLOW <= (OPA_r[N-1] == OPB_r[N-1]) && (temp[N-1] != OPA_r[N-1]);
+           if ($signed(OPA_r) == $signed(OPB_r))
+                                    begin E <= 1; G <= 0; L <= 0; end
+                                else if ($signed(OPA_r) > $signed(OPB_r))
+                                    begin E <= 0; G <= 1; L <= 0; end
+                                else
+                                    begin E <= 0; G <= 0; L <= 1; end
            end
            else
            ERR <= 1'b1;
@@ -253,6 +259,12 @@ end
            temp = $signed(OPA_r) - $signed(OPB_r);
            RES <= temp;
            OFLOW <= (OPA_r[N-1] != OPB_r[N-1]) && (temp[N-1] != OPA_r[N-1]);
+           if ($signed(OPA_r) == $signed(OPB_r))
+                                    begin E <= 1; G <= 0; L <= 0; end
+                                else if ($signed(OPA_r) > $signed(OPB_r))
+                                    begin E <= 0; G <= 1; L <= 0; end
+                                else
+                                    begin E <= 0; G <= 0; L <= 1; end
            end
            else
            ERR <= 1'b1;
