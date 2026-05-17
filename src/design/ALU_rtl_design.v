@@ -24,10 +24,7 @@ module ALU_rtl_design #(parameter N = 4)
 reg [N-1:0] OPA_r, OPB_r;
 reg [3:0] CMD_r;
 reg MODE_r, CIN_r;
-reg [1:0] INP_VALID_r;
-
-reg valid_d;
-  
+reg [1:0] INP_VALID_r; 
   
     always@(posedge CLK or posedge RST)
       begin
